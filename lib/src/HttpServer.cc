@@ -665,12 +665,12 @@ void HttpServer::handleResponse(
     if (!conn->connected())
         return;
 
-    if (paramPack->responseSent_.exchange(true, std::memory_order_acq_rel))
-    {
-        LOG_ERROR << "Sending more than 1 response for request. "
-                     "Ignoring later response";
-        return;
-    }
+    // if (paramPack->responseSent_.exchange(true, std::memory_order_acq_rel))
+    // {
+    //     LOG_ERROR << "Sending more than 1 response for request. "
+    //                  "Ignoring later response";
+    //     return;
+    // }
 
     auto resp =
         HttpAppFrameworkImpl::instance().handleSessionForResponse(req,
